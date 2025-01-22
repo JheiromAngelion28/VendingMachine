@@ -79,4 +79,6 @@ def vending_machine_simulation():
             else:
                 print("Invalid input. Exiting the vending machine at once.")
                 break
+
+
 vending_machine_simulation()
