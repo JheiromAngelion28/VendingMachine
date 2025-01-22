@@ -44,16 +44,19 @@ def print_menu():
 
 #the second fuction is used to make the payment and change.
 def process_transaction(price):
-    print(f"The price is AED{price}")
-    money_inserted = float(input("Please enter the amount of money you want to deposit"))
-
-    if money_inserted < price:
-        print("The amount paid is not enough. Please add more money")
-
-    else:
-        change = money_inserted - price
-        print(f"The Payment is sucsessful! Your change is AED{change:.2f} ")
-        return True 
+     print(f"The price is AED{price}")
+     while True:
+        try:
+            money_inserted = float(input("Please enter the amount of money you want to deposit: "))
+            if money_inserted < price:
+                print("The amount paid is not enough. Please add more money.")
+            else:
+                change = money_inserted - price
+                print(f"The payment is successful! Your change is AED{change:.2f}.")
+                return True
+        except ValueError:
+            print("The input is invalid. Please enter a valid number.")
+        
 
 #This is the main program of the machine combining the other 2 fuctions.
 def vending_machine_simulation():
@@ -74,6 +77,6 @@ def vending_machine_simulation():
                 print("Thank you for using the vending machine!")
                 break
             else:
-                print("Invalid input. Exiting the vending machine.")
+                print("Invalid input. Exiting the vending machine at once.")
                 break
 vending_machine_simulation()
