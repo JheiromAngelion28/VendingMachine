@@ -56,6 +56,8 @@ def process_transaction(price):
                 return True
         except ValueError:
             print("The input is invalid. Please enter a valid number.")
+            return vending_machine_simulation()
+            
         
 
 #This is the main program of the machine combining the other 2 fuctions.
