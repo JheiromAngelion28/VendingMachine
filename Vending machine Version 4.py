@@ -34,7 +34,7 @@ vending_machine = {
 
 #The first fuction is used to print the menu coming from the dictionary.
 def print_menu():
-    print("Available Products:")
+    print("Welcome to the vending machine! Here are the available Products:")
     sections = set([item['Section'] for item in vending_machine.values()])
     for section in sections:
      print(f"\n{section}:")
@@ -44,7 +44,7 @@ def print_menu():
 
 #the second fuction is used to make the payment and change.
 def process_transaction(price):
-    print(f"Please insert your money in AED{price}")
+    print(f"The price is AED{price}")
     money_inserted = float(input("Please enter the amount of money you want to deposit"))
 
     if money_inserted < price:
@@ -62,19 +62,18 @@ def vending_machine_simulation():
         item_number = input("Select the items by entering its number:")
         if item_number not in vending_machine:
             print("The input is invalid, please try again")
+            vending_machine_simulation()
         item = vending_machine[item_number]
         print(f"You have selected: {item['name']} -- AED{item['AED']}")
-        if process_transaction(item['AED']) is not None:
-         more_items =input("Do you still want to buy more items? Type (Yes/No)").lower()
-         if more_items != "Yes":
-            print("Thank you so much for using the vending machine.")
-            break
-        else:
-         more_items = input("Do you still want to try again? Type(Yes?No)").lower()
-        if more_items !="Yes":
-            print("Thank you so much for using the vending machine. Have a good day")
-
+        
+        if process_transaction(item['AED']):
+            more_items = input("\nDo you want to buy more items? Type 'y' for yes or 'n' for no: ").lower()
+            if more_items == "y":
+                continue
+            elif more_items == "n":
+                print("Thank you for using the vending machine!")
+                break
+            else:
+                print("Invalid input. Exiting the vending machine.")
+                break
 vending_machine_simulation()
-
-
-
