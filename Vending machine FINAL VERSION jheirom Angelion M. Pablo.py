@@ -3,32 +3,32 @@
 #the dictionary has the number, name, and price of each item of the vending machine
 #inside them are nested dictionaries to store the item names and prices
 vending_machine = {
-"1":{"name": "Chips Onion Flavor","Section":"CHIPS","AED":10},
-"2":{"name": "Chips Scpicy Flavor","Section":"CHIPS","AED":10},
-"3":{"name": "Chips Tomato Flavor","Section":"CHIPS","AED":10},
-"4":{"name": "Chips Brisket Flavor","Section":"CHIPS","AED":10},
-"5":{"name": "Hot Chocolate Milk","Section":"HOT DRINKS","AED":5},
-"6":{"name": "Coffe Latte ","Section":"HOT DRINKS","AED":6},
-"7":{"name": "Espresso Coffee","Section":"HOT DRINKS","AED":6},
-"8":{"name": "Coffe Americano","Section":"HOT DRINKS","AED":6},
-"9":{"name": "Evian Water","Section":"COLD DRINKS","AED":10},
-"10":{"name": "Arwa Water","Section":"COLD DRINKS","AED":1},
-"11":{"name": "Masafi Water","Section":"COLD DRINKS","AED":1},
-"12":{"name": "Iced tea","Section":"COLD DRINKS","AED":15},
-"13":{"name": "Chocolate Milkshake","Section":"COLD DRINKS","AED":12},
-"14":{"name": "Galaxy Chocolate Bar","Section":"SWEETS","AED":2},
-"15":{"name": "Galaxy Dark Chocolate Bar","Section":"SWEETS","AED":2},
-"16":{"name": "M%M Cangy","Section":"SWEETS","AED":2},
-"17":{"name": "KitKat CHocolate Bar","Section":"SWEETS","AED":2},
-"18":{"name": "Grape Juice","Section":"JUICE","AED":5,},
-"19":{"name": "Apple Juice","Section":"JUICE","AED":5},
-"10":{"name": "Strawberry Juice","Section":"JUICE","AED":5},
-"21":{"name": "Carrot Juice","Section":"JUICE","AED":5},
-"22":{"name": "Boba Cheese Flavor","Section":"BOBA DRINK","AED":15},
-"23":{"name": "Boba Chocolate Flavor","Section":"BOBA DRINK","AED":15},
-"24":{"name": "Boba Strawbverry Flavor","Section":"BOBA DRINK","AED":15},
-"25":{"name": "Boba Ube Flavor","Section":"BOBA DRINK","AED":15},
-"26":{"name": "Boba Caramel Flavor","Section":"BOBA DRINK","AED":15}
+"1":{"name": "Chips Onion Flavor","Section":"A: CHIPS","AED":10},
+"2":{"name": "Chips Scpicy Flavor","Section":"A: CHIPS","AED":10},
+"3":{"name": "Chips Tomato Flavor","Section":"A: CHIPS","AED":10},
+"4":{"name": "Chips Brisket Flavor","Section":"A: CHIPS","AED":10},
+"5":{"name": "Hot Chocolate Milk","Section":"B: HOT DRINKS","AED":5},
+"6":{"name": "Coffe Latte ","Section":"B: HOT DRINKS","AED":6},
+"7":{"name": "Espresso Coffee","Section":"B: HOT DRINKS","AED":6},
+"8":{"name": "Coffe Americano","Section":"B: HOT DRINKS","AED":6},
+"9":{"name": "Evian Water","Section":"C: COLD DRINKS","AED":10},
+"10":{"name": "Arwa Water","Section":"C: COLD DRINKS","AED":1},
+"11":{"name": "Masafi Water","Section":"C: COLD DRINKS","AED":1},
+"12":{"name": "Iced tea","Section":"C: COLD DRINKS","AED":15},
+"13":{"name": "Chocolate Milkshake","Section":"C: COLD DRINKS","AED":12},
+"14":{"name": "Galaxy Chocolate Bar","Section":"D: SWEETS","AED":2},
+"15":{"name": "Galaxy Dark Chocolate Bar","Section":"D: SWEETS","AED":2},
+"16":{"name": "M%M Cangy","Section":"D: SWEETS","AED":2},
+"17":{"name": "KitKat CHocolate Bar","Section":"D: SWEETS","AED":2},
+"18":{"name": "Grape Juice","Section":"E: JUICE","AED":5,},
+"19":{"name": "Apple Juice","Section":"E: JUICE","AED":5},
+"10":{"name": "Strawberry Juice","Section":"E: JUICE","AED":5},
+"21":{"name": "Carrot Juice","Section":"E: JUICE","AED":5},
+"22":{"name": "Boba Cheese Flavor","Section":"F: BOBA DRINK","AED":15},
+"23":{"name": "Boba Chocolate Flavor","Section":"F: BOBA DRINK","AED":15},
+"24":{"name": "Boba Strawbverry Flavor","Section":"F: BOBA DRINK","AED":15},
+"25":{"name": "Boba Ube Flavor","Section":"F: BOBA DRINK","AED":15},
+"26":{"name": "Boba Caramel Flavor","Section":"F: BOBA DRINK","AED":15}
  
 }
 
@@ -40,7 +40,7 @@ def print_menu():
      print(f"\n{section}:")
      for key, item in vending_machine.items():
       if item["Section"] == section:
-       print(f"{key}.{item['name']} -AED{item['AED']}")
+       print(f"{key}.{item['name']} - AED {item['AED']}")
 
 #the second fuction is used to make the payment and change.
 def process_transaction(price):
