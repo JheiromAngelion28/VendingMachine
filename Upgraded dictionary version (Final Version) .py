@@ -63,14 +63,14 @@ def add_to_cart():
             update_product_list()
             show_cart()
         else:
-            messagebox.showerror("Error", "the product is not available, insufficient , out of stock.") #Instead of print, we use the message box.
+            messagebox.showerror("Error", "the product is not available or out of stock.\n If the code number is wrong try again. ") #Instead of print, we use the message box.
     except ValueError:
         messagebox.showerror("Error", "Please enter a proper valid code along with the quantity you want.")
 
 #This is to manage the stock of items as the user buys.
 def update_product_list():
     product_list.delete(1.0, tk.END)
-    product_list.insert(tk.END, "Here are the Available Products:\n")
+    product_list.insert(tk.END, "Here are the available Products:\n")
     for code, item in products.items():
         product_list.insert(
             tk.END, f"{code}: {item['name']} - AED{item['price']} (Stock: {item['stock']})\n"
@@ -79,7 +79,7 @@ def update_product_list():
 # To Display the cart for the user to see.
 def show_cart():
     cart_contents.delete(1.0, tk.END)
-    cart_contents.insert(tk.END, "Here Your Shopping Cart Inventory:\n")
+    cart_contents.insert(tk.END, "Here Is Your Shopping Cart Inventory:\n")
     total_cost = 0
     for code, item in cart.items(): #Using the for loop to ensure that all of the pruchased items are removed from the stock.
         item_total = item['quantity'] * item['price']
@@ -99,16 +99,16 @@ def process_payment():
             change = payment - total_cost
             
             items_dispensed = "\n".join(
-            f"- {item['quantity']} x {item_name} (AED {item['price']:.2f} each)"
+            f"- {item['name']} x {item_name} (AED {item['price']:.2f} each)"
                 for item_name, item in cart.items()
             )
-            messagebox.showinfo("Payment Successful!",  f"The payment has been accepted!\n\nItems dispensed:\n{items_dispensed}\n\nChange: AED {change:.2f}. Thank you for using jheirom's Vending machine")
+            messagebox.showinfo("The Payment Is Successful!",  f"The payment has been accepted!\n\nItems dispensed:\n{items_dispensed}\n\nChange: AED {change:.2f}. Thank you for using Jheirom's\nVending machine!")
             
             reset_cart()
         else:
             messagebox.showerror("Error", "The payment is not enough. Please place enough money and try again.")
     except ValueError:
-        messagebox.showerror("Error", "Please enter a valid payment amount and try again.")
+        messagebox.showerror("Error", "Please fill a valid payment amount and try again.")
 
 #After the payment, we will reset the cart to remove all of the paid items.
 def reset_cart():
