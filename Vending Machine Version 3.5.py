@@ -1,4 +1,4 @@
-#Vending Machine Final Version jheirom Angelion M. Pablo
+
 
 #the dictionary has the number, name, and price of each item of the vending machine
 #inside them are nested dictionaries to store the item names and prices
