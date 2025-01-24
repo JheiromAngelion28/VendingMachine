@@ -1,7 +1,3 @@
-#Vending Machine Final Version Jheirom Angelion M. Pablo
-# For the final version, Idecided to try and learn a GUI user interface
-
-
 import tkinter as tk
 from tkinter import messagebox
 
@@ -35,79 +31,72 @@ products = {
     'F5': {'name': 'Boba Caramel Flavor', 'price': 15, 'stock': 20},
 
 }
-
-
+ 
 root = tk.Tk()
-root.title("Vending Machine")
+root.title("Jheirom's Vending machine")
 root.config(bg="#f0f9ff",)
-
-
-cart = {}
-
+root.geometry
+shopping_cart = {}
 
 def add_to_cart():
-    code = product_code_entry.get().upper()
+    food = product_code_entry.get().upper()
     try:
         quantity = int(quantity_entry.get())
-        if code in products and products[code]['stock'] >= quantity:
-            if code in cart:
-                cart[code]['quantity'] += quantity
+        if food in products and products[food]['stock'] >= quantity:
+            if food in shopping_cart:
+                shopping_cart[food]['quantity'] += quantity
             else:
-                cart[code] = {
-                    'name': products[code]['name'],
-                    'price': products[code]['price'],
+                shopping_cart[food] = {
+                    'name': products[food]['name'],
+                    'price': products[food]['price'],
                     'quantity': quantity
                 }
-            products[code]['stock'] -= quantity
-            messagebox.showinfo("Success", f"Added {quantity} {products[code]['name']}(s) to your cart.")
+            products[food]['stock'] -= quantity
+            messagebox.showinfo("You have successfully added", f"{quantity} {products[food]['name']}(s) into your shopping cart")
             update_product_list()
             show_cart()
         else:
-            messagebox.showerror("Error", "Product not available or not enough stock.")
+            messagebox.showerror("Sorry, the product is out of stock")
     except ValueError:
-        messagebox.showerror("Input Error", "Please enter a valid product code and quantity.")
-
+        messagebox.showerror("The input is invalid. Please try again")
 
 def update_product_list():
     product_list.delete(1.0, tk.END)
-    product_list.insert(tk.END, "Available Products:\n")
-    for code, item in products.items():
+    product_list.insert(tk.END, "Welcome to the vending machine! Here are the available products\n" )
+    for food, item in products.items():
         product_list.insert(
-            tk.END, f"{code}: {item['name']} - ${item['price']} (Stock: {item['stock']})\n"
-        )
-
+            tk.END,f"{food} {item['name']} - AED{item['price']} (Stock: {item['stock']} \n",
+        ),
 
 def show_cart():
     cart_contents.delete(1.0, tk.END)
-    cart_contents.insert(tk.END, "Your Cart:\n")
+    cart_contents.insert(tk.END, "Your shopping cart inventory:\n")
     total_cost = 0
-    for code, item in cart.items():
-        item_total = item['quantity'] * item['price']
+    for food,item in shopping_cart.items():
+        item_total = item ['quantity'] * item['price']
+        
         total_cost += item_total
         cart_contents.insert(
-            tk.END, f"{item['name']} - Quantity: {item['quantity']} - Each: AED{item['price']}, Total: AED{item_total:.2f}\n"
+          tk.END, f"{item['name']} - Quantity: {item['quantity']} - Each: AED{item['price']}, Total: AED{item_total:.2f}\n"
         )
-    total_label.config(text=f"Total: AED{total_cost:.2f}")
-
+    total_label.config(text=f"Total: AED{total_cost:.2f}") 
 
 def process_payment():
     try:
         payment = float(payment_entry.get())
-        total_cost = sum(item['quantity'] * item['price'] for item in cart.values())
-
+        total_cost = sum(item['quantity'] * item['price'] for item in shopping_cart.values())
         if payment >= total_cost:
-            change = payment - total_cost
-            messagebox.showinfo("Payment Successful", f"Payment accepted!\nChange: AED{change:.2f}")
-            reset_cart()
+           change = payment - total_cost
+           messagebox.showinfo("The Payment is successful!", f"The payment is accepted with a change of \n AED:{change:.2f}")
+           reset_cart() 
         else:
-            messagebox.showerror("Payment Error", "The payment is not enough. Please enter more money.")
+            messagebox.showerror("Error. The amout given isnot enough. Please add more money")
     except ValueError:
-        messagebox.showerror("Input Error", "Please enter a valid payment amount and try again.")
-
+        messagebox.showerror("The input is invalid. Please try again")
 
 def reset_cart():
-    global cart
-    cart = {}
+    global shopping_cart
+    shopping_cart = {}
     show_cart()
     total_label.config(text="Total: AED0.00",font=("Times new roman",12,"bold"))
     payment_entry.delete(0, tk.END)
@@ -115,7 +104,7 @@ def reset_cart():
 
 
 product_code_label = tk.Label(root, text="Product Code:", font=("Times new roman", 12, "bold"),bg="#f0f8ff", fg="#000080")
-product_code_label.grid(row=0, column=0)
+product_code_label.grid(row=1, column=0) 
 product_code_entry = tk.Entry(root)
 product_code_entry.grid(row=0, column=1)
 
@@ -128,11 +117,11 @@ add_button = tk.Button(root, text="Add to Cart",font=("Times new roman",12,"bold
 add_button.grid(row=2, column=0, columnspan=3)
 
 product_list = tk.Text(root, height=25, width=100)
-product_list.grid(row=3, column=0, columnspan=2)
+product_list.grid(row=3, column=0, columnspan=2,) 
 update_product_list()
 
-cart_contents = tk.Text(root, height=25, width=100 )
-cart_contents.grid(row=4, column=0, columnspan=2)
+cart_contents = tk.Text(root, height=25, width=100)
+cart_contents.grid(row=4, column=0, columnspan=2), 
 
 
 total_label = tk.Label(root, text="Total: AED0.00",font=("Times new roman",12,"bold"))
@@ -150,3 +139,11 @@ pay_button.grid(row=7, column=0, columnspan=90)
 root.mainloop()
 
    
+
+     
+
+
+
+
+
+
