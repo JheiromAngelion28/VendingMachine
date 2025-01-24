@@ -5,7 +5,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-#Dictionaru for the product items with their ID and stock.
+#Dictionary for the product items with their ID and stock.
 products = {
     'A1': {'name': 'Chips Onion Flavor', 'price': 5, 'stock': 10},
     'A2': {'name': 'Chips Scpicy Flavor', 'price': 5, 'stock': 5},
@@ -38,7 +38,7 @@ products = {
 
 #Importing the tkinder to display the vending machine with its custom fonts.
 root = tk.Tk()
-root.title("Vending Machine")
+root.title("Theirom's Vending Machine")
 root.config(bg="#f0f9ff",)
 
 
@@ -79,7 +79,7 @@ def update_product_list():
 # To Display the cart for the user to see.
 def show_cart():
     cart_contents.delete(1.0, tk.END)
-    cart_contents.insert(tk.END, "Your Cart:\n")
+    cart_contents.insert(tk.END, "Your Shopping Cart Inventory:\n")
     total_cost = 0
     for code, item in cart.items(): #Using the for loop to ensure that all of the pruchased items are removed from the stock.
         item_total = item['quantity'] * item['price']
@@ -97,14 +97,14 @@ def process_payment():
 
         if payment >= total_cost:
             change = payment - total_cost
-            messagebox.showinfo("Payment Successful", f"Payment accepted!\nChange: AED{change:.2f}")
+            messagebox.showinfo("Payment Successful!", f"the payment accepted!\nChange: AED{change:.2f}")
             reset_cart()
         else:
-            messagebox.showerror("Payment Error", "The payment is not enough. Please enter more money.")
+            messagebox.showerror("Payment error", "The payment is not enough. Please enter more money.")
     except ValueError:
-        messagebox.showerror("Input Error", "Please enter a valid payment amount and try again.")
+        messagebox.showerror("Input is invalid", "Please enter a valid payment amount and try again.")
 
-
+#After the payment, we will reset the cart to remove all of the paid items.
 def reset_cart():
     global cart
     cart = {}
