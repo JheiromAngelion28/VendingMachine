@@ -9,36 +9,36 @@ from tkinter import messagebox
 products = {
     'A1': {'name': 'Chips Onion Flavor', 'price': 5, 'stock': 10},
     'A2': {'name': 'Chips Scpicy Flavor', 'price': 5, 'stock': 5},
-    'A3': {'name': 'Chips Tomato Flavor', 'price': 5, 'stock': 20},
-    'A4': {'name': 'Chips Brisket Flavor', 'price': 5, 'stock': 20},
-    'B1': {'name': 'Hot Chocolate Milk', 'price': 6, 'stock': 20},
-    'B2': {'name': 'Coffe Latte', 'price': 6, 'stock': 20},
-    'B3': {'name': 'Espresso Coffee', 'price': 6, 'stock': 20},
-    'B4': {'name': 'Coffe Americano', 'price': 7, 'stock': 20},
-    'C1': {'name': 'Evian Water', 'price': 9, 'stock': 20},
-    'C2': {'name': 'Arwa Water', 'price': 1, 'stock': 20},
-    'C3': {'name': 'Masafi Water', 'price': 1, 'stock': 20},
-    'C4': {'name': 'Iced tea', 'price': 9, 'stock': 20},
-    'C5': {'name': 'Chocolate Milkshake', 'price': 6, 'stock': 20},
-    'D1': {'name': 'Galaxy Chocolate Bar', 'price': 6, 'stock': 20},
-    'D2': {'name': 'Galaxy Dark Chocolate Bar', 'price': 2, 'stock': 20},
-    'D3': {'name': 'M&M Candy', 'price': 2, 'stock': 20},
-    'D4': {'name': 'KitKat Chocolate Bar', 'price': 2, 'stock': 20},
-    'E1': {'name': 'Apple Juice', 'price': 12, 'stock': 20},
-    'E2': {'name': 'Grape Juice', 'price': 12, 'stock': 20},
-    'E3': {'name': 'Strawberry Juice', 'price': 12, 'stock': 20},
-    'E4': {'name': 'Carrot Juice', 'price': 12, 'stock': 20},
-    'F1': {'name': 'Boba Cheese Flavor', 'price': 15, 'stock': 20},
-    'F2': {'name': 'Boba Chocolate Flavor', 'price': 15, 'stock': 20},
-    'F3': {'name': 'Boba Strawberry Flavor', 'price': 15, 'stock': 20},
-    'F4': {'name': 'Boba Ube Flavor', 'price': 15, 'stock': 20},
-    'F5': {'name': 'Boba Caramel Flavor', 'price': 15, 'stock': 20},
+    'A3': {'name': 'Chips Tomato Flavor', 'price': 5, 'stock': 10},
+    'A4': {'name': 'Chips Brisket Flavor', 'price': 5, 'stock': 10},
+    'B1': {'name': 'Hot Chocolate Milk', 'price': 6, 'stock': 13},
+    'B2': {'name': 'Coffee Latte', 'price': 6, 'stock': 5},
+    'B3': {'name': 'Espresso Coffee', 'price': 6, 'stock': 4},
+    'B4': {'name': 'Coffee Americano', 'price': 7, 'stock': 9},
+    'C1': {'name': 'Evian Water', 'price': 9, 'stock': 5},
+    'C2': {'name': 'Arwa Water', 'price': 1, 'stock': 6},
+    'C3': {'name': 'Masafi Water', 'price': 1, 'stock': 7},
+    'C4': {'name': 'Iced tea', 'price': 9, 'stock': 9},
+    'C5': {'name': 'Chocolate Milkshake', 'price': 6, 'stock': 9},
+    'D1': {'name': 'Galaxy Chocolate Bar', 'price': 6, 'stock': 9},
+    'D2': {'name': 'Galaxy Dark Chocolate Bar', 'price': 2, 'stock': 9},
+    'D3': {'name': 'M&M Candy', 'price': 2, 'stock': 12},
+    'D4': {'name': 'KitKat Chocolate Bar', 'price': 2, 'stock': 10},
+    'E1': {'name': 'Apple Juice', 'price': 12, 'stock': 10},
+    'E2': {'name': 'Grape Juice', 'price': 12, 'stock': 10},
+    'E3': {'name': 'Strawberry Juice', 'price': 12, 'stock': 10},
+    'E4': {'name': 'Carrot Juice', 'price': 12, 'stock': 10},
+    'F1': {'name': 'Boba Cheese Flavor', 'price': 15, 'stock': 10},
+    'F2': {'name': 'Boba Chocolate Flavor', 'price': 15, 'stock': 10},
+    'F3': {'name': 'Boba Strawberry Flavor', 'price': 15, 'stock': 10},
+    'F4': {'name': 'Boba Ube Flavor', 'price': 15, 'stock': 10},
+    'F5': {'name': 'Boba Caramel Flavor', 'price': 15, 'stock': 10},
 
 }
 
 #Importing the tkinder to display the vending machine with its custom fonts.
 root = tk.Tk()
-root.title("Theirom's Vending Machine")
+root.title("Jheirom's Vending Machine")
 root.config(bg="#f0f9ff",)
 
 
@@ -59,18 +59,18 @@ def add_to_cart():
                     'quantity': quantity
                 }
             products[code]['stock'] -= quantity
-            messagebox.showinfo("Success", f"Added {quantity} {products[code]['name']}(s) to your cart.")
+            messagebox.showinfo("Success", f" you have added {quantity} {products[code]['name']}(s) into your basket.")
             update_product_list()
             show_cart()
         else:
-            messagebox.showerror("Error", "Product not available or not enough stock.") #Instead of print, we use the message box.
+            messagebox.showerror("Error", "the product is not available, insufficient , out of stock.") #Instead of print, we use the message box.
     except ValueError:
-        messagebox.showerror("Input Error", "Please enter a valid product code and quantity.")
+        messagebox.showerror("Error", "Please enter a proper valid code along with the quantity you want.")
 
 #This is to manage the stock of items as the user buys.
 def update_product_list():
     product_list.delete(1.0, tk.END)
-    product_list.insert(tk.END, "Available Products:\n")
+    product_list.insert(tk.END, "Here are the Available Products:\n")
     for code, item in products.items():
         product_list.insert(
             tk.END, f"{code}: {item['name']} - AED{item['price']} (Stock: {item['stock']})\n"
@@ -79,7 +79,7 @@ def update_product_list():
 # To Display the cart for the user to see.
 def show_cart():
     cart_contents.delete(1.0, tk.END)
-    cart_contents.insert(tk.END, "Your Shopping Cart Inventory:\n")
+    cart_contents.insert(tk.END, "Here Your Shopping Cart Inventory:\n")
     total_cost = 0
     for code, item in cart.items(): #Using the for loop to ensure that all of the pruchased items are removed from the stock.
         item_total = item['quantity'] * item['price']
@@ -97,12 +97,18 @@ def process_payment():
 
         if payment >= total_cost:
             change = payment - total_cost
-            messagebox.showinfo("Payment Successful!", f"the payment accepted!\nChange: AED{change:.2f}")
+            
+            items_dispensed = "\n".join(
+            f"- {item['quantity']} x {item_name} (AED {item['price']:.2f} each)"
+                for item_name, item in cart.items()
+            )
+            messagebox.showinfo("Payment Successful!",  f"The payment has been accepted!\n\nItems dispensed:\n{items_dispensed}\n\nChange: AED {change:.2f}. Thank you for using jheirom's Vending machine")
+            
             reset_cart()
         else:
-            messagebox.showerror("Payment error", "The payment is not enough. Please enter more money.")
+            messagebox.showerror("Error", "The payment is not enough. Please place enough money and try again.")
     except ValueError:
-        messagebox.showerror("Input is invalid", "Please enter a valid payment amount and try again.")
+        messagebox.showerror("Error", "Please enter a valid payment amount and try again.")
 
 #After the payment, we will reset the cart to remove all of the paid items.
 def reset_cart():
@@ -113,7 +119,7 @@ def reset_cart():
     payment_entry.delete(0, tk.END)
     update_product_list()
 
-
+#
 product_code_label = tk.Label(root, text="Product Code:", font=("Times new roman", 16, "bold"),bg="#f0f8ff", fg="#000080")
 product_code_label.grid(row=0, column=0)#To mmanipulate the positions of the label, button, or input.
 product_code_entry = tk.Entry(root)#Considered as an input.
